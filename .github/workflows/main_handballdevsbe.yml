@@ -50,7 +50,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'CSM_Suceava_BE'
+          app-name: 'handballdevsbe'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_07B0B00CAAE2413F8148279986815BCA }}
           package: .
