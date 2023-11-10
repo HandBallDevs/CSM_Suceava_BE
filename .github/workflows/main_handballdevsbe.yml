@@ -1,4 +1,4 @@
-name: Build and deploy ASP.Net Core app to Azure Web App - handballdevsbe
+name: Build and deploy ASP.Net Core app to Azure Web App - CSM_Suceava_BE
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
@@ -21,18 +21,17 @@ jobs:
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
-
-      - name: Navigate to the project directory
-        run: cd CSM_Suceava_BE
+        working-directory: "./CSM_Suceava_BE"
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ./CSM_Suceava_BE
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        working-directory: "./CSM_Suceava_BE"
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ./CSM_Suceava_BE
+          path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
     runs-on: windows-latest
@@ -43,7 +42,7 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
           name: .net-app
 
@@ -51,7 +50,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'handballdevsbe'
+          app-name: 'CSM_Suceava_BE'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_07B0B00CAAE2413F8148279986815BCA }}
-          package: ./CSM_Suceava_BE
+          package: .
