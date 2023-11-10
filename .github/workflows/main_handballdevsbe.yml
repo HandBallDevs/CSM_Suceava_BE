@@ -26,13 +26,13 @@ jobs:
         run: cd CSM_Suceava_BE
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/CSM_Suceava_BE
+        run: dotnet publish -c Release -o ./CSM_Suceava_BE
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/CSM_Suceava_BE
+          path: ./CSM_Suceava_BE
 
   deploy:
     runs-on: windows-latest
@@ -54,4 +54,4 @@ jobs:
           app-name: 'handballdevsbe'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_07B0B00CAAE2413F8148279986815BCA }}
-          package: CSM_Suceava_BE
+          package: ./CSM_Suceava_BE
