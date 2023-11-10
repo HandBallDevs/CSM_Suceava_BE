@@ -23,7 +23,7 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Navigate to the project directory
-        run: cd ${{env.DOTNET_ROOT}}/CSM_Suceava_BE
+        run: cd CSM_Suceava_BE
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/CSM_Suceava_BE
@@ -54,4 +54,4 @@ jobs:
           app-name: 'handballdevsbe'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_07B0B00CAAE2413F8148279986815BCA }}
-          package: .
+          package: CSM_Suceava_BE
