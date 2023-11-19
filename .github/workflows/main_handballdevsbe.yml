@@ -1,4 +1,4 @@
-name: Build and deploy ASP.Net Core app to Azure Web App - CSM_Suceava_BE
+name: Build and deploy ASP.Net Core app to Azure Web App - CSU_Suceava_BE
 
 on:
   push:
@@ -21,11 +21,11 @@ jobs:
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
-        working-directory: "./CSM_Suceava_BE"
+        working-directory: "./CSU_Suceava_BE"
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
-        working-directory: "./CSM_Suceava_BE"
+        working-directory: "./CSU_Suceava_BE"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
