@@ -1,6 +1,6 @@
-﻿using CSM_Suceava_BE.Domain.Enums;
+﻿using CSU_Suceava_BE.Domain.Enums;
 
-namespace CSM_Suceava_BE.Domain.Entities
+namespace CSU_Suceava_BE.Domain.Entities
 {
     public class Stire
     {
