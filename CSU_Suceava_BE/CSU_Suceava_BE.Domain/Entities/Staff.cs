@@ -1,6 +1,6 @@
-﻿using CSM_Suceava_BE.Domain.Enums;
+﻿using CSU_Suceava_BE.Domain.Enums;
 
-namespace CSM_Suceava_BE.Domain.Entities
+namespace CSU_Suceava_BE.Domain.Entities
 {
     public class Staff
     {
@@ -13,6 +13,6 @@ namespace CSM_Suceava_BE.Domain.Entities
         public string URLPoza { get; set; } = null!;
         public DateTime DataNastere { get; set; }
         public float Inaltime { get; set; }
-        public string Descriere { get; set; } = null!;
+        public string? Descriere { get; set; }
     }
 }
