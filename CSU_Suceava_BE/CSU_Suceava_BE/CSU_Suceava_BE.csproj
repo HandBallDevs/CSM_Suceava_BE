@@ -13,9 +13,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CSU_Suceava_BE.Application\CSU_Suceava_BE.Application.csproj" />
     <ProjectReference Include="..\CSU_Suceava_BE.Infrastructure\CSU_Suceava_BE.Infrastructure.csproj" />
   </ItemGroup>
 
