@@ -9,30 +9,36 @@ namespace CSU_Suceava_BE.Domain.Configurations
         public void Configure(EntityTypeBuilder<Utilizator> builder)
         {
             builder
-                .HasKey(ip => ip.Id);
+                .HasKey(s => s.Id);
 
             builder
-                .Property(ip => ip.Rol)
+                .Property(s => s.Rol)
                 .IsRequired();
 
             builder
-                .Property(ip => ip.Nume)
+                .Property(s => s.Nume)
                 .HasMaxLength(50)
                 .IsRequired();
 
             builder
-                .Property(ip => ip.Prenume)
+                .Property(s => s.Prenume)
                 .HasMaxLength(50)
                 .IsRequired();
 
             builder
-                .Property(ip => ip.Email)
+                .Property(s => s.Email)
                 .HasMaxLength(100)
                 .IsRequired();
 
             builder
-                .Property(ip => ip.Parola)
+                .Property(s => s.Parola)
                 .HasMaxLength(64)
+                .IsRequired();
+
+            builder
+                .HasMany(s => s.Stiri)
+                .WithOne(s => s.Utilizator)
+                .HasForeignKey(s => s.UtilizatorId)
                 .IsRequired();
         }
     }

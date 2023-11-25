@@ -1,11 +1,6 @@
 ﻿using CSU_Suceava_BE.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSU_Suceava_BE.Domain.Configurations
 {
@@ -58,6 +53,18 @@ namespace CSU_Suceava_BE.Domain.Configurations
             builder
                 .Property(s => s.Descriere)
                 .HasMaxLength(5000);
+
+            builder
+                .HasMany(s => s.IstoricPremii)
+                .WithOne(ip => ip.Staff)
+                .HasForeignKey(ip => ip.StaffId)
+                 .IsRequired();
+
+            builder
+                .HasMany(s => s.IstoricRoluri)
+                .WithOne(ir => ir.Staff)
+                .HasForeignKey(ir => ir.StaffId)
+                .IsRequired();
         }
     }
 }

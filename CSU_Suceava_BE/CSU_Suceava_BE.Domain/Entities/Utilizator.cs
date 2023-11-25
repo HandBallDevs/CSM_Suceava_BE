@@ -10,5 +10,7 @@ namespace CSU_Suceava_BE.Domain.Entities
         public Rol Rol { get; set; }
         public string Email { get; set; } = null!;
         public string Parola { get; set; } = null!;
+
+        public List<Stire> Stiri { get; set; } = null!;
     }
 }

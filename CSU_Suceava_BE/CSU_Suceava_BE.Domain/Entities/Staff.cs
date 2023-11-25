@@ -12,7 +12,10 @@ namespace CSU_Suceava_BE.Domain.Entities
         public string Post { get; set; } = null!;
         public string URLPoza { get; set; } = null!;
         public DateTime DataNastere { get; set; }
-        public float Inaltime { get; set; }
+        public double Inaltime { get; set; }
         public string? Descriere { get; set; }
+
+        public List<IstoricPremii> IstoricPremii { get; set; } = null!;
+        public List<IstoricRoluri> IstoricRoluri { get; set; } = null!;
     }
 }
