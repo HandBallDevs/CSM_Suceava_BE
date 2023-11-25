@@ -11,5 +11,8 @@ namespace CSU_Suceava_BE.Domain.Entities
         public StatusStire StatusStire { get; set; }
         public DateTime DataAutopostare { get; set; }
         public DateTime DataPostare { get; set; }
+
+        public Guid UtilizatorId { get; set; }
+        public Utilizator Utilizator { get; set; } = null!;
     }
 }
