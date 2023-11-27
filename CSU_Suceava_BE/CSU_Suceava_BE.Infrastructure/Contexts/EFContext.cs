@@ -1,6 +1,9 @@
-﻿using CSU_Suceava_BE.Domain.Entities;
+﻿using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using CSU_Suceava_BE.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace CSU_Suceava_BE.Infrastructure.Contexts
 {
@@ -15,13 +18,14 @@ namespace CSU_Suceava_BE.Infrastructure.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                .AddJsonFile("appsettings.json")
-                .Build();
+            var client = new SecretClient(
+                new Uri($"https://{Environment.GetEnvironmentVariable("KEY_VAULT_NAME")}.vault.azure.net/"),
+                new DefaultAzureCredential());
 
-            optionsBuilder
-                .UseSqlServer(configuration.GetConnectionString("DBString"));
+            var secret = client.GetSecret(Environment.GetEnvironmentVariable("DB_SECRET"));
+            string connectionString = secret.Value.ToString()!;
+
+            optionsBuilder.UseSqlServer(connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
