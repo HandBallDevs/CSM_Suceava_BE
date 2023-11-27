@@ -23,7 +23,7 @@ namespace CSU_Suceava_BE.Application.Services
 
         public async Task<StaffDto> CreateStaffAsync(StaffDto staff)
         {
-            staff.Poza = await blobStorageService.UploadImageAsync(staff.Poza, nameof(Staff));
+            staff.URLPoza = await blobStorageService.UploadImageAsync(staff.URLPoza, nameof(Staff));
 
             var createdStaff = await staffRepository.CreateStaffAsync(mapper.Map<Staff>(staff));
 
