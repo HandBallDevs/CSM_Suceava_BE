@@ -37,7 +37,7 @@ namespace CSU_Suceava_BE.Domain.Configurations
                 .IsRequired();
 
             builder
-                .Property(s => s.URLPoza)
+                .Property(s => s.Poza)
                 .HasMaxLength(2000)
                 .IsRequired();
 
