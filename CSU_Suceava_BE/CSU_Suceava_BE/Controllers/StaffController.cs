@@ -21,11 +21,19 @@ namespace CSU_Suceava_BE.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateStaffAsync(StaffDto staff)
         {
-         
+            try
+            {
                 var createdStaff = await staffService.CreateStaffAsync(staff);
 
                 return Ok(createdStaff);
-          
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.Message);
+
+                return BadRequest();
+            }
+
 
         }
 
@@ -33,13 +41,20 @@ namespace CSU_Suceava_BE.Controllers
         [HttpGet]
         public async Task<IActionResult> GetStaffAsync(Guid id)
         {
-           
+            try
+            {
                 var staff = await staffService.GetStaffAsync(id);
 
                 return Ok(staff);
-        
-        
-            
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.Message);
+
+                return BadRequest();
+            }
+
+
         }
 
         [SwaggerOperation(Summary = "Update staff")]
@@ -70,7 +85,8 @@ namespace CSU_Suceava_BE.Controllers
 
                 return NoContent();
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 logger.LogError(ex.Message);
 
