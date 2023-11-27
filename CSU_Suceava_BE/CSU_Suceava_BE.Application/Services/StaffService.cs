@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 using CSU_Suceava_BE.Application.Interfaces;
 using CSU_Suceava_BE.Application.Models;
 using CSU_Suceava_BE.Domain.Entities;
@@ -8,19 +10,22 @@ namespace CSU_Suceava_BE.Application.Services
 {
     public class StaffService : IStaffService
     {
+        private readonly BlobStorageService blobStorageService;
         private readonly IStaffRepository staffRepository;
         private readonly IMapper mapper;
 
-        public StaffService(IStaffRepository staffRepository, IMapper mapper)
+        public StaffService(IStaffRepository staffRepository, IMapper mapper, BlobStorageService blobServiceClient)
         {
+            this.blobStorageService = blobServiceClient;
             this.staffRepository = staffRepository;
             this.mapper = mapper;
         }
 
         public async Task<StaffDto> CreateStaffAsync(StaffDto staff)
         {
-            var createdStaff = await staffRepository
-                .CreateStaffAsync(mapper.Map<Staff>(staff));
+            staff.Poza = await blobStorageService.UploadImageAsync(staff.Poza, nameof(Staff));
+
+            var createdStaff = await staffRepository.CreateStaffAsync(mapper.Map<Staff>(staff));
 
             return mapper.Map<StaffDto>(createdStaff);
         }
@@ -32,7 +37,7 @@ namespace CSU_Suceava_BE.Application.Services
             await staffRepository.DeleteStaffAsync(staff);
         }
 
-        public async  Task<StaffDto> GetStaffAsync(Guid staffId)
+        public async Task<StaffDto> GetStaffAsync(Guid staffId)
         {
             var staff = await staffRepository.GetStaffAsync(staffId);
 
