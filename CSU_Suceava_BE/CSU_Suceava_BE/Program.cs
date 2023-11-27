@@ -1,3 +1,4 @@
+using Azure.Identity;
 using CSU_Suceava_BE.Application.Interfaces;
 using CSU_Suceava_BE.Application.Mapper;
 using CSU_Suceava_BE.Application.Services;
@@ -10,6 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => options.EnableAnnotations());
+
+var x = Environment.GetEnvironmentVariables();
+
+builder.Configuration.AddAzureKeyVault(
+    new Uri($"https://{Environment.GetEnvironmentVariable("KEY_VAULT_NAME")}.vault.azure.net/"),
+    new DefaultAzureCredential());
+
 builder.Services.AddScoped<IStaffRepository, StaffRepository>();
 builder.Services.AddScoped<IStaffService, StaffService>();
 
