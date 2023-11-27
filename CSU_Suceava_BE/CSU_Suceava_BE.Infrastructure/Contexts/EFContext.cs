@@ -19,11 +19,11 @@ namespace CSU_Suceava_BE.Infrastructure.Contexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var client = new SecretClient(
-                new Uri($"https://{Environment.GetEnvironmentVariable("KEY_VAULT_NAME")}.vault.azure.net/"),
+                new Uri($"https://{Environment.GetEnvironmentVariable("KEY_VAULT_NAME")}.vault.azure.net"),
                 new DefaultAzureCredential());
 
             var secret = client.GetSecret(Environment.GetEnvironmentVariable("DB_SECRET"));
-            string connectionString = secret.Value.ToString()!;
+            string connectionString = secret.Value.Value;
 
             optionsBuilder.UseSqlServer(connectionString);
         }
