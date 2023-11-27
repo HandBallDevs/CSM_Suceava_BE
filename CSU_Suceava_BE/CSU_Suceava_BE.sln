@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSU_Suceava_BE", "CSU_Sucea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSU_Suceava_BE.Application", "CSU_Suceava_BE.Application\CSU_Suceava_BE.Application.csproj", "{6572D86B-3DD2-4CFE-B094-9B54C8909943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSU_Suceava_BE.Domain", "CSU_Suceava_BE.Domain\CSU_Suceava_BE.Domain.csproj", "{1F7ADADB-FF31-446B-803A-0B1E7FD31F4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSU_Suceava_BE.Domain", "CSU_Suceava_BE.Domain\CSU_Suceava_BE.Domain.csproj", "{1F7ADADB-FF31-446B-803A-0B1E7FD31F4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSU_Suceava_BE.Infrastructure", "CSU_Suceava_BE.Infrastructure\CSU_Suceava_BE.Infrastructure.csproj", "{C70DF9F7-3A06-4C9B-8F59-332361AEEA63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSU_Suceava_BE.Infrastructure", "CSU_Suceava_BE.Infrastructure\CSU_Suceava_BE.Infrastructure.csproj", "{C70DF9F7-3A06-4C9B-8F59-332361AEEA63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

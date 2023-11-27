@@ -2,13 +2,13 @@
 using Azure.Security.KeyVault.Secrets;
 using CSU_Suceava_BE.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
 
 namespace CSU_Suceava_BE.Infrastructure.Contexts
 {
-    public class EFContext:DbContext
+    public class EFContext : DbContext
     {
+        private readonly SecretClient secretClient;
+
         public DbSet<Staff> Staff { get; set; }
         public DbSet<Utilizator> Utilizator { get; set; }
         public DbSet<Stire> Stire { get; set; }
@@ -16,13 +16,14 @@ namespace CSU_Suceava_BE.Infrastructure.Contexts
         public DbSet<IstoricPremii> IstoricPremii { get; set; }
         public DbSet<IstoricRoluri> IstoricRoluri { get; set; }
 
+        public EFContext(SecretClient secretClient)
+        {
+            this.secretClient = secretClient;
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var client = new SecretClient(
-                new Uri($"https://{Environment.GetEnvironmentVariable("KEY_VAULT_NAME")}.vault.azure.net"),
-                new DefaultAzureCredential());
-
-            var secret = client.GetSecret(Environment.GetEnvironmentVariable("DB_SECRET"));
+            var secret = secretClient.GetSecret(Environment.GetEnvironmentVariable("DB_SECRET"));
             string connectionString = secret.Value.Value;
 
             optionsBuilder.UseSqlServer(connectionString);
