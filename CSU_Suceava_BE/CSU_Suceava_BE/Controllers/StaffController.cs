@@ -1,5 +1,5 @@
 ﻿using CSU_Suceava_BE.Application.Interfaces;
-using CSU_Suceava_BE.Application.Models;
+using CSU_Suceava_BE.Application.Models.Staff;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 

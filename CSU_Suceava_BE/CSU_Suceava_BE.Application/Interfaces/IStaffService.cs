@@ -1,4 +1,4 @@
-﻿using CSU_Suceava_BE.Application.Models;
+﻿using CSU_Suceava_BE.Application.Models.Staff;
 using CSU_Suceava_BE.Domain.Entities;
 
 namespace CSU_Suceava_BE.Application.Interfaces

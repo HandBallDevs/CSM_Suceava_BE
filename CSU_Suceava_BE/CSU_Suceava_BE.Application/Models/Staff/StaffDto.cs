@@ -1,6 +1,6 @@
 ﻿using CSU_Suceava_BE.Domain.Enums;
 
-namespace CSU_Suceava_BE.Application.Models
+namespace CSU_Suceava_BE.Application.Models.Staff
 {
     public class StaffDto
     {
