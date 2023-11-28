@@ -30,10 +30,14 @@ builder.Services.AddScoped<IStaffService, StaffService>();
 builder.Services.AddScoped<IIstoricPremiiRepository, IstoricPremiiRepository>();
 builder.Services.AddScoped<IIstoricPremiiService, IstoricPremiiService>();
 
+builder.Services.AddScoped<IIstoricRoluriRepository, IstoricRoluriRepository>();
+builder.Services.AddScoped<IIstoricRoluriService, IstoricRoluriService>();
+
 builder.Services.AddScoped<BlobStorageService>();
 
 builder.Services.AddAutoMapper(typeof(StaffProfile));
 builder.Services.AddAutoMapper(typeof(IstoricPremiiProfile));
+builder.Services.AddAutoMapper(typeof(IstoricRoluriProfile));
 
 builder.Services.AddDbContext<EFContext>();
 

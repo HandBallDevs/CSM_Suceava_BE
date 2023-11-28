@@ -57,7 +57,7 @@ namespace CSU_Suceava_BE.Controllers
             }
         }
 
-        [SwaggerOperation(Summary = "Delete istoric premii by staff id")]
+        [SwaggerOperation(Summary = "Delete istoric premii by id")]
         [HttpDelete]
         public async Task<IActionResult> DeleteIstoricPremiiByStaffIdAsync(Guid id)
         {
