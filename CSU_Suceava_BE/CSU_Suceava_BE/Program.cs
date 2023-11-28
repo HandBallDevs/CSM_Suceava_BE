@@ -26,9 +26,14 @@ builder.Services.AddAzureClients(clientBuilder =>
 
 builder.Services.AddScoped<IStaffRepository, StaffRepository>();
 builder.Services.AddScoped<IStaffService, StaffService>();
+
+builder.Services.AddScoped<IIstoricPremiiRepository, IstoricPremiiRepository>();
+builder.Services.AddScoped<IIstoricPremiiService, IstoricPremiiService>();
+
 builder.Services.AddScoped<BlobStorageService>();
 
 builder.Services.AddAutoMapper(typeof(StaffProfile));
+builder.Services.AddAutoMapper(typeof(IstoricPremiiProfile));
 
 builder.Services.AddDbContext<EFContext>();
 
