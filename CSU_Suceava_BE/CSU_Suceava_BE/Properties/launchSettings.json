@@ -1,23 +1,18 @@
-﻿{
-  "$schema": "https://json.schemastore.org/launchsettings.json",
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:29585",
-      "sslPort": 44319
-    }
-  },
+{
   "profiles": {
     "CSU_Suceava_BE": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7294;http://localhost:5270",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "KEY_VAULT_NAME": "csusvkeyvault",
+        "DB_SECRET": "csusvdb",
+        "STORAGE_ACCOUNT_NAME": "csusvsa",
+        "BLOB_CONTAINER_NAME": "csusvbs"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7294;http://localhost:5270"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -26,6 +21,15 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:29585",
+      "sslPort": 44319
     }
   }
 }
