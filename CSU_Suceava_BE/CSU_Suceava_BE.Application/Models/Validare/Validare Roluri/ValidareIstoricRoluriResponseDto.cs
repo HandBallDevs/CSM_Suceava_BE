@@ -12,15 +12,9 @@ namespace CSU_Suceava_BE.Application.Models.Validare.Validare_Premii
     {
         public ValidareIstoricRoluriResponseDto()
         {
-
             RuleFor(entity => entity.NumeRol)
-                .MinimumLength(1).WithMessage("Adauga Nume Premiu")
-                .WithMessage("Casuta Trebuie Completata");
-
-
-
-
-
+                .MinimumLength(3).WithMessage("Numele Rolului trebuie să conțină cel puțin 3 caractere.")
+                .MaximumLength(100).WithMessage("Numele Rolului nu poate depăși 100 de caractere.");
         }
     }
 }

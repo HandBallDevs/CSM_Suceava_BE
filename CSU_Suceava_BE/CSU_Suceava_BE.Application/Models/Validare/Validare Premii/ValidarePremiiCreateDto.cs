@@ -12,16 +12,9 @@ namespace CSU_Suceava_BE.Application.Models.Validare.Validare_Premii
     {
         public ValidarePremiiCreateDto()
         {
-
             RuleFor(entity => entity.NumePremiu)
-                .MinimumLength(1).WithMessage("Adauga Nume Premiu")            
-                .WithMessage("Casuta Trebuie Completata");
-
-            RuleFor(entity => entity.DataPrimire)
-                .LessThan(DateTime.Now)          
-                .WithMessage("Data Invalida");
-
-           
+                .MinimumLength(5).WithMessage("Numele Premiului trebuie să conțină cel puțin 5 caractere.")
+                .MaximumLength(100).WithMessage("Numele Premiului nu poate depăși 100 de caractere.");
         }
     }
 }
