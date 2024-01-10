@@ -1,6 +1,7 @@
 ﻿using CSU_Suceava_BE.Application.Interfaces;
 using CSU_Suceava_BE.Application.JwtUtils;
 using CSU_Suceava_BE.Application.Models.Staff;
+using CSU_Suceava_BE.Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -38,7 +39,7 @@ namespace CSU_Suceava_BE.Controllers
         }
 
         [SwaggerOperation(Summary = "Retrive staff by id")]
-        [HttpGet]
+        [HttpGet, Route("{id}")]
         public async Task<IActionResult> GetStaffAsync(Guid id)
         {
             try
@@ -53,8 +54,25 @@ namespace CSU_Suceava_BE.Controllers
 
                 return BadRequest();
             }
+        }
 
+        [SwaggerOperation(Summary = "Retrive staff by type")]
+        [HttpGet]
+        public async Task<IActionResult> GetStaffByType([FromQuery] TipLot tipLot)
+        {
+            try
+            {
+                var staff = await staffService.GetStaffByType(tipLot);
 
+                return Ok(staff);
+               
+            }
+            catch(Exception ex)
+            {
+                logger.LogError(ex.Message);
+
+                return BadRequest();
+            }
         }
 
         [SwaggerOperation(Summary = "Update staff")]

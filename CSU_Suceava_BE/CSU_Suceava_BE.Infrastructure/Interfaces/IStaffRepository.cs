@@ -1,4 +1,5 @@
 ﻿using CSU_Suceava_BE.Domain.Entities;
+using CSU_Suceava_BE.Domain.Enums;
 
 namespace CSU_Suceava_BE.Infrastructure.Interfaces
 {
@@ -8,5 +9,6 @@ namespace CSU_Suceava_BE.Infrastructure.Interfaces
         Task<Staff> GetStaffAsync(Guid staffId);
         Task<Staff> UpdateStaffAsync(Staff staff);
         Task DeleteStaffAsync(Staff staff);
+        Task<List<Staff>> GetStaffByTypeAsync(TipLot tipLot);
     }
 }

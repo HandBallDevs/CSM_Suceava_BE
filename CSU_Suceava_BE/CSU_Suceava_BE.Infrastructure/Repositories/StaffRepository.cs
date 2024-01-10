@@ -1,4 +1,5 @@
 ﻿using CSU_Suceava_BE.Domain.Entities;
+using CSU_Suceava_BE.Domain.Enums;
 using CSU_Suceava_BE.Infrastructure.Contexts;
 using CSU_Suceava_BE.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +35,11 @@ namespace CSU_Suceava_BE.Infrastructure.Repositories
                 .Staff
                 .AsNoTracking()
                 .FirstAsync(s => s.Id.Equals(staffId));
+        }
+
+        public async Task<List<Staff>> GetStaffByTypeAsync(TipLot tipLot)
+        {
+            return await eFContext.Staff.Where(s => s.TipLot.Equals(tipLot)).ToListAsync();
         }
 
         public async Task<Staff> UpdateStaffAsync(Staff staff)
