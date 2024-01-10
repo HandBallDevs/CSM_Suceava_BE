@@ -1,5 +1,4 @@
-﻿using Azure.Identity;
-using Azure.Security.KeyVault.Secrets;
+﻿using Azure.Security.KeyVault.Secrets;
 using CSU_Suceava_BE.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,6 +36,5 @@ namespace CSU_Suceava_BE.Infrastructure.Contexts
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(IstoricPremii).Assembly);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(IstoricRoluri).Assembly);
         }
-
     }
 }

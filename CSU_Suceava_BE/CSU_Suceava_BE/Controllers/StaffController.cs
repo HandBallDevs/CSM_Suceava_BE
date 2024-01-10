@@ -1,5 +1,7 @@
 ﻿using CSU_Suceava_BE.Application.Interfaces;
+using CSU_Suceava_BE.Application.JwtUtils;
 using CSU_Suceava_BE.Application.Models.Staff;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -33,8 +35,6 @@ namespace CSU_Suceava_BE.Controllers
 
                 return BadRequest();
             }
-
-
         }
 
         [SwaggerOperation(Summary = "Retrive staff by id")]

@@ -9,11 +9,14 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CSU_Suceava_BE.Domain\CSU_Suceava_BE.Domain.csproj" />
     <ProjectReference Include="..\CSU_Suceava_BE.Infrastructure\CSU_Suceava_BE.Infrastructure.csproj" />
+    <ProjectReference Include="..\CSU_Suceava_BE.Utils\CSU_Suceava_BE.Utils.csproj" />
   </ItemGroup>
 
 </Project>
