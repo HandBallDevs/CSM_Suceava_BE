@@ -13,7 +13,7 @@
         "TOKEN_SECRET": "csusvtokensecret"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7294;http://localhost:5270"
+      "applicationUrl": ""
     },
     "IIS Express": {
       "commandName": "IISExpress",

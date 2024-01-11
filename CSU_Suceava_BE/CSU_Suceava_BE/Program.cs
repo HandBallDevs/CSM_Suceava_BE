@@ -4,23 +4,18 @@ using CSU_Suceava_BE.Application.Interfaces;
 using CSU_Suceava_BE.Application.JwtUtils;
 using CSU_Suceava_BE.Application.Mapper;
 using CSU_Suceava_BE.Application.Services;
-using CSU_Suceava_BE.Domain.Enums;
 using CSU_Suceava_BE.Infrastructure.Contexts;
 using CSU_Suceava_BE.Infrastructure.Interfaces;
 using CSU_Suceava_BE.Infrastructure.Repositories;
-using CSU_Suceava_BE.Utils;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Azure;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
-using System;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuration
 var configuration = new ConfigurationBuilder()
     .AddEnvironmentVariables()
     .Build();
@@ -68,7 +63,7 @@ builder.Services.AddAuthorization(options =>
     policy.RequireAssertion(context => context.User.Claims.First(x => x.Type == "Role").Value == Policies.Administrator));
 
     options.AddPolicy(Policies.CreatorDeContinut, policy =>
-    policy.RequireAssertion(context => context.User.Claims.First(x => x.Type == "Role").Value == Policies.CreatorDeContinut)) ;
+    policy.RequireAssertion(context => context.User.Claims.First(x => x.Type == "Role").Value == Policies.CreatorDeContinut));
 });
 
 builder.Services.AddAzureClients(clientBuilder =>
@@ -81,6 +76,9 @@ builder.Services.AddAzureClients(clientBuilder =>
 
 builder.Services.AddScoped<IStaffRepository, StaffRepository>();
 builder.Services.AddScoped<IStaffService, StaffService>();
+
+builder.Services.AddScoped<IMeciRepository, MeciRepository>();
+builder.Services.AddScoped<IMeciService, MeciService>();
 
 builder.Services.AddScoped<IIstoricPremiiRepository, IstoricPremiiRepository>();
 builder.Services.AddScoped<IIstoricPremiiService, IstoricPremiiService>();
@@ -99,12 +97,23 @@ builder.Services.AddScoped<BlobStorageService>();
 builder.Services.AddAutoMapper(typeof(StaffProfile));
 builder.Services.AddAutoMapper(typeof(IstoricPremiiProfile));
 builder.Services.AddAutoMapper(typeof(IstoricRoluriProfile));
+builder.Services.AddAutoMapper(typeof(MeciProfile));
 
 builder.Services.AddDbContext<EFContext>();
 
 // Application
+builder.Services.AddCors(options =>
+{
+    // this defines a CORS policy called "default"
+    options.AddPolicy("default", policy =>
+    {
+        policy.WithOrigins("*")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 var app = builder.Build();
-
+app.UseCors("default");
 // Swagger
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -126,4 +135,6 @@ app.MapControllers();
 app.UseMiddleware<JwtMiddleware>();
 
 // Run the application
+
+
 app.Run();
