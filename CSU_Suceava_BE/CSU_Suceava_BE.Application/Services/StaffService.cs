@@ -20,13 +20,13 @@ namespace CSU_Suceava_BE.Application.Services
             this.mapper = mapper;
         }
 
-        public async Task<StaffDto> CreateStaffAsync(StaffDto staff)
+        public async Task<StaffResponseDto> CreateStaffAsync(StaffCreateDto staff)
         {
             staff.URLPoza = await blobStorageService.UploadImageAsync(staff.URLPoza, nameof(Staff));
 
             var createdStaff = await staffRepository.CreateStaffAsync(mapper.Map<Staff>(staff));
 
-            return mapper.Map<StaffDto>(createdStaff);
+            return mapper.Map<StaffResponseDto>(createdStaff);
         }
 
         public async Task DeleteStaffAsync(Guid staffId)
@@ -36,25 +36,25 @@ namespace CSU_Suceava_BE.Application.Services
             await staffRepository.DeleteStaffAsync(staff);
         }
 
-        public async Task<StaffDto> GetStaffAsync(Guid staffId)
+        public async Task<StaffResponseDto> GetStaffAsync(Guid staffId)
         {
             var staff = await staffRepository.GetStaffAsync(staffId);
 
-            return mapper.Map<StaffDto>(staff);
+            return mapper.Map<StaffResponseDto>(staff);
         }
 
-        public async Task<List<StaffDto>> GetStaffByType(TipLot tipLot)
+        public async Task<List<StaffResponseDto>> GetStaffByType(TipLot tipLot)
         {
             var staff = await staffRepository.GetStaffByTypeAsync(tipLot);
 
-            return mapper.Map<List<StaffDto>>(staff);        }
+            return mapper.Map<List<StaffResponseDto>>(staff);        }
 
-        public async Task<StaffDto> UpdateStaffAsync(StaffDto staff)
+        public async Task<StaffResponseDto> UpdateStaffAsync(StaffCreateDto staff)
         {
             var updatedStaff = await staffRepository
                 .UpdateStaffAsync(mapper.Map<Staff>(staff));
 
-            return mapper.Map<StaffDto>(updatedStaff);
+            return mapper.Map<StaffResponseDto>(updatedStaff);
         }
     }
 }

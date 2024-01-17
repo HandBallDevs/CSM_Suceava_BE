@@ -2,7 +2,7 @@
 
 namespace CSU_Suceava_BE.Application.Models.Staff
 {
-    public class StaffDto
+    public class StaffResponseDto
     {
         public Guid Id { get; set; }
         public string Nume { get; set; } = null!;

@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using CSU_Suceava_BE.Application.Models.Staff;
 namespace CSU_Suceava_BE.Application.Models.Validare.Staff
 {
-    public class ValidareStaffDto : AbstractValidator<StaffDto>
+    public class ValidareStaffDto : AbstractValidator<StaffCreateDto>
     {
         public ValidareStaffDto()
         {

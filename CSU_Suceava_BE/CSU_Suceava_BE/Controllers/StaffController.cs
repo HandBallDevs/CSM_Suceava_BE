@@ -22,7 +22,7 @@ namespace CSU_Suceava_BE.Controllers
 
         [SwaggerOperation(Summary = "Create staff")]
         [HttpPost]
-        public async Task<IActionResult> CreateStaffAsync(StaffDto staff)
+        public async Task<IActionResult> CreateStaffAsync(StaffCreateDto staff)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace CSU_Suceava_BE.Controllers
 
         [SwaggerOperation(Summary = "Update staff")]
         [HttpPut]
-        public async Task<IActionResult> UpdateStaffAsync(StaffDto staff)
+        public async Task<IActionResult> UpdateStaffAsync(StaffCreateDto staff)
         {
             try
             {

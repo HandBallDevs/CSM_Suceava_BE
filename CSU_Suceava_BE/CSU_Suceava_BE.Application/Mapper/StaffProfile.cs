@@ -8,9 +8,9 @@ namespace CSU_Suceava_BE.Application.Mapper
     {
         public StaffProfile()
         {
-            CreateMap<StaffDto, Staff>();
+            CreateMap<StaffCreateDto, Staff>();
 
-            CreateMap<Staff, StaffDto>();
+            CreateMap<Staff, StaffResponseDto>();
         }
     }
 }

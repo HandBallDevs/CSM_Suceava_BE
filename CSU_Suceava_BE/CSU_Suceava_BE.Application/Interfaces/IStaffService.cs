@@ -5,10 +5,10 @@ namespace CSU_Suceava_BE.Application.Interfaces
 {
     public interface IStaffService
     {
-        Task<StaffDto> CreateStaffAsync(StaffDto staff);
-        Task<StaffDto> GetStaffAsync(Guid staffId);
-        Task<StaffDto> UpdateStaffAsync(StaffDto staff);
+        Task<StaffResponseDto> CreateStaffAsync(StaffCreateDto staff);
+        Task<StaffResponseDto> GetStaffAsync(Guid staffId);
+        Task<StaffResponseDto> UpdateStaffAsync(StaffCreateDto staff);
         Task DeleteStaffAsync(Guid staffId);
-        Task<List<StaffDto>> GetStaffByType(TipLot tipLot);
+        Task<List<StaffResponseDto>> GetStaffByType(TipLot tipLot);
     }
 }
