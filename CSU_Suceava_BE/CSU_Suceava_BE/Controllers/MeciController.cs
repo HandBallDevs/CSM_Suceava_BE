@@ -71,7 +71,7 @@ namespace CSU_Suceava_BE.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetFilteredMeciuri(
-            [FromRoute] StatusMeci? statusMeci, [FromQuery] TipCampionat? tipCampionat, [FromQuery] string? editie)
+            [FromQuery] StatusMeci? statusMeci, [FromQuery] TipCampionat? tipCampionat, [FromQuery] string? editie)
         {
             try
             {

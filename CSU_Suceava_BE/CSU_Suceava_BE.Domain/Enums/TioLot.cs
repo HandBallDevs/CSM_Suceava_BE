@@ -4,6 +4,7 @@
     {
         Seniori,
         Junior,
-        Cadeti
+        Cadeti,
+        Staff
     }
 }

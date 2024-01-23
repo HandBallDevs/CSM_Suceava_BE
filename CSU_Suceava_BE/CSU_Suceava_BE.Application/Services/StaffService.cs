@@ -31,14 +31,14 @@ namespace CSU_Suceava_BE.Application.Services
 
         public async Task DeleteStaffAsync(Guid staffId)
         {
-            var staff = await staffRepository.GetStaffAsync(staffId);
+            var staff = await staffRepository.GetStaffByIdAsync(staffId);
 
             await staffRepository.DeleteStaffAsync(staff);
         }
 
         public async Task<StaffResponseDto> GetStaffAsync(Guid staffId)
         {
-            var staff = await staffRepository.GetStaffAsync(staffId);
+            var staff = await staffRepository.GetStaffByIdAsync(staffId);
 
             return mapper.Map<StaffResponseDto>(staff);
         }
@@ -49,10 +49,12 @@ namespace CSU_Suceava_BE.Application.Services
 
             return mapper.Map<List<StaffResponseDto>>(staff);        }
 
-        public async Task<StaffResponseDto> UpdateStaffAsync(StaffCreateDto staff)
+        public async Task<StaffResponseDto> UpdateStaffAsync(Guid id, StaffCreateDto staff)
         {
+            var existingStaff = await staffRepository.GetStaffByIdAsync(id);
+
             var updatedStaff = await staffRepository
-                .UpdateStaffAsync(mapper.Map<Staff>(staff));
+                .UpdateStaffAsync(mapper.Map(staff, existingStaff));
 
             return mapper.Map<StaffResponseDto>(updatedStaff);
         }

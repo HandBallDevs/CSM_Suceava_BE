@@ -77,11 +77,11 @@ namespace CSU_Suceava_BE.Controllers
 
         [SwaggerOperation(Summary = "Update staff")]
         [HttpPut]
-        public async Task<IActionResult> UpdateStaffAsync(StaffCreateDto staff)
+        public async Task<IActionResult> UpdateStaffAsync(Guid id, StaffCreateDto staff)
         {
             try
             {
-                var updatedStaff = await staffService.UpdateStaffAsync(staff);
+                var updatedStaff = await staffService.UpdateStaffAsync(id, staff);
 
                 return Ok(updatedStaff);
             }

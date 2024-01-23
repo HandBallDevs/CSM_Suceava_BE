@@ -4,6 +4,7 @@ namespace CSU_Suceava_BE.Application.Models.Meci
 {
     public class MeciResponseDto
     {
+        public Guid Id { get; set; }
         public TipCampionat TipCampionat { get; set; }
         public string Editia { get; set; } = null!;
         public StatusMeci StatusMeci { get; set; }

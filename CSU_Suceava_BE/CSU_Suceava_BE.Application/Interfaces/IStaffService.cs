@@ -7,7 +7,7 @@ namespace CSU_Suceava_BE.Application.Interfaces
     {
         Task<StaffResponseDto> CreateStaffAsync(StaffCreateDto staff);
         Task<StaffResponseDto> GetStaffAsync(Guid staffId);
-        Task<StaffResponseDto> UpdateStaffAsync(StaffCreateDto staff);
+        Task<StaffResponseDto> UpdateStaffAsync(Guid id, StaffCreateDto staff);
         Task DeleteStaffAsync(Guid staffId);
         Task<List<StaffResponseDto>> GetStaffByType(TipLot tipLot);
     }

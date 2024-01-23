@@ -29,12 +29,12 @@ namespace CSU_Suceava_BE.Infrastructure.Repositories
             await eFContext.SaveChangesAsync();
         }
 
-        public async Task<Staff> GetStaffAsync(Guid staffId)
+        public async Task<Staff> GetStaffByIdAsync(Guid staffId)
         {
-          return await eFContext
-                .Staff
-                .AsNoTracking()
-                .FirstAsync(s => s.Id.Equals(staffId));
+            return await eFContext
+                  .Staff
+                  .AsNoTracking()
+                  .FirstAsync(s => s.Id.Equals(staffId));
         }
 
         public async Task<List<Staff>> GetStaffByTypeAsync(TipLot tipLot)
