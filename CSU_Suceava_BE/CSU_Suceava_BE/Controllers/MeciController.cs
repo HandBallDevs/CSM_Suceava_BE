@@ -2,6 +2,7 @@
 using CSU_Suceava_BE.Application.Models.Meci;
 using CSU_Suceava_BE.Domain.Enums;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace CSU_Suceava_BE.Controllers
 {
@@ -17,6 +18,7 @@ namespace CSU_Suceava_BE.Controllers
             this.meciService = meciService;
         }
 
+        [SwaggerOperation(Summary = "Create meci")]
         [HttpPost]
         public async Task<IActionResult> CreateMeciAsync(MeciCreateDto meci)
         {
@@ -34,6 +36,7 @@ namespace CSU_Suceava_BE.Controllers
             }
         }
 
+        [SwaggerOperation(Summary = "Delete meci by id")]
         [HttpDelete]
         public async Task<IActionResult> DeleteMeciByIdAsync(Guid id)
         {
@@ -52,6 +55,7 @@ namespace CSU_Suceava_BE.Controllers
             }
         }
 
+        [SwaggerOperation(Summary = "Get meci by id")]
         [HttpGet, Route("{id}")]
         public async Task<IActionResult> GetMeciByIdAsync([FromRoute] Guid id)
         {
@@ -69,6 +73,7 @@ namespace CSU_Suceava_BE.Controllers
             }
         }
 
+        [SwaggerOperation(Summary = "Get filtered meciuri")]
         [HttpGet]
         public async Task<IActionResult> GetFilteredMeciuri(
             [FromQuery] StatusMeci? statusMeci, [FromQuery] TipCampionat? tipCampionat, [FromQuery] string? editie)
@@ -87,6 +92,7 @@ namespace CSU_Suceava_BE.Controllers
             }
         }
 
+        [SwaggerOperation(Summary = "Update meci by id")]
         [HttpPut]
         public async Task<IActionResult> UpdateMeciAsync(Guid id, MeciCreateDto meci)
         {

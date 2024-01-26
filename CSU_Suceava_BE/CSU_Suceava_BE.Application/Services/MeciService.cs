@@ -71,6 +71,7 @@ namespace CSU_Suceava_BE.Application.Services
 
         public async Task<MeciResponseDto> UpdateMeciAsync(Guid id, MeciCreateDto meci)
         {
+            meci.URLPoza = await blobStorageService.UploadImageAsync(meci.URLPoza, nameof(Staff));
             var existingMeci = await meciRepository.GetMeciByIdAsync(id);
 
             var updatedMeci = await meciRepository

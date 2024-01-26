@@ -51,6 +51,7 @@ namespace CSU_Suceava_BE.Application.Services
 
         public async Task<StaffResponseDto> UpdateStaffAsync(Guid id, StaffCreateDto staff)
         {
+            staff.URLPoza = await blobStorageService.UploadImageAsync(staff.URLPoza, nameof(Staff));
             var existingStaff = await staffRepository.GetStaffByIdAsync(id);
 
             var updatedStaff = await staffRepository

@@ -25,13 +25,6 @@ namespace CSU_Suceava_BE.Domain.Configurations
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder
-                .Property(s => s.StatusStire)
-                .HasPrecision(1)
-                .IsRequired();
-
-            builder
-                .Property(s => s.DataAutopostare);
 
             builder
                 .Property(s => s.DataPostare);

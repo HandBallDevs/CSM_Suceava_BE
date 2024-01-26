@@ -20,12 +20,11 @@ var configuration = new ConfigurationBuilder()
     .AddEnvironmentVariables()
     .Build();
 
-// Secrets
+
 var keyVaultUri = new Uri($"https://{Environment.GetEnvironmentVariable("KEY_VAULT_NAME")}.vault.azure.net/");
 var secretClient = new SecretClient(keyVaultUri, new DefaultAzureCredential());
 var token = secretClient.GetSecret(Environment.GetEnvironmentVariable("TOKEN_SECRET")).Value.Value;
 
-// Services
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
@@ -89,6 +88,9 @@ builder.Services.AddScoped<IIstoricRoluriService, IstoricRoluriService>();
 builder.Services.AddScoped<IUtilizatorRepository, UtilizatorRepository>();
 builder.Services.AddScoped<IUtilizatorService, UtilizatorService>();
 
+builder.Services.AddScoped<IStireRepository, StireRepository>();
+builder.Services.AddScoped<IStireService, StireService>();
+
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 
 builder.Services.AddScoped<BlobStorageService>();
@@ -98,6 +100,7 @@ builder.Services.AddAutoMapper(typeof(StaffProfile));
 builder.Services.AddAutoMapper(typeof(IstoricPremiiProfile));
 builder.Services.AddAutoMapper(typeof(IstoricRoluriProfile));
 builder.Services.AddAutoMapper(typeof(MeciProfile));
+builder.Services.AddAutoMapper(typeof(StireProfile));
 
 builder.Services.AddDbContext<EFContext>();
 
